@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#chartContainer {
+  display: flex;
+  position: relative;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 50%;
+  height: auto;
+
+  margin: auto;
+  margin-top: 30px;
+  border: 1px solid black; 
+  background-color: white;
+
+}
+
+#teamNumberForm {
+  padding: 10px;
+}
+
+#chartInformation {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  background-color: #b10003;
+  box-sizing: border-box;
+  color: white;
+}
+
+#chartGraph {
+  padding: 10px;
+}
+
+#numMatchesObserved {
+  flex: 1;
+  border-left: 1px solid black;
+}
+
+#teamNumber {
+  flex: 1;
+}
+
+@media screen and (max-width: 1000px) {
+  #chartContainer{
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #chartContainer{
+    width: 99%;
+  }
+}

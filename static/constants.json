@@ -1,0 +1,53 @@
+{
+  "tables": ["match", "mechanical", "electrical", "programming"],
+  "questions": {
+    "match": ["Team Number", "Match Number", "Moved from Initiation Line",
+          "Auto Low Miss", "Auto Low Hit", "Auto High Miss", "Auto High Hit",
+          "Tele Low Miss", "Tele Low Hit", "Tele High Miss", "Tele High Hit",
+          "Attempted Climb", "Ending Level", "Defensive Score (1-10)", "Additional Climb Info", "Other Notes"],
+   "mechanical": ["Team Number", "Drivetrain Information", "Climber Information",
+                  "Mechanisms Information", "Reliability", "Notes"],
+    "electrical": ["Team Number", "Basic Team Structure", "Number of Members",
+                   "Mounts Kill Switch?", "What is their wire layout like?", "What types of wires are used?", 
+                   "Did they use pneumatics?", "How do they regulate their air?", "Material for belly pan?",
+                   "What is their belly pan layout?", "Anything Different This Year?", "Anything Special?", 
+                   "Brownout Prevention?", "Preseason Activities?", "Help w/ strategy?",
+                   "Any Encoders/Sensors?", "Encoder Use?", "CAN or PWM", "Other"],
+    "programming": ["Team Number", "Uses Github?", "People on Team", "Language", "Other"]
+  },
+
+  "questionIndexes": {
+    
+    "match": ["team_number", "match_number", "moved_initiation",
+              "auto_low_miss", "auto_low_hit", "auto_high_miss", "auto_high_hit",
+          "tele_low_miss", "tele_low_hit", "tele_high_miss", "tele_high_hit",
+              "attempted_climb", "ending_level", "defensive_score", "climb_information", "notes"],
+    "mechanical": ["team_number", "drivetrain_information", "climber_information",
+                   "mechanisms_information", "reliability", "notes"],
+    "electrical": ["team_number", "team_structure", "number_of_members", "mount_kill_switch", 
+                  "wire_layout", "type_of_wire", "have_pneumatics", "air_regulation", "belly_pan", 
+                  "belly_pan_layout", "anything_different", "anything_special", "brownout_prevention",
+                   "preseason_content", "helps_with_strategy","any_encoders", "encoders_use", "can_pwm", "other"],
+     "programming": ["team_number", "uses_github", "prog_size", "program_lang", "other"]
+
+  },
+
+
+  "dataCalculationHeaders": ["Team Number", "Matches Observed", "Avg Start Point",	"Avg Cargo High",
+      "Avg Cargo Low",	"Least Cargo Cycles",	"Most Cargo Cycles",
+      "Avg Cargo Placed", "STD Dev Cargo", "Least Cycles",
+      "Most Cycles", "Average Cycles",
+      "Std Dev Cycles", "Best Climb",	"% Best CLimb", "Average Defense Rating", "Total Scoring (For Alliance)"],
+
+  "graphCalculationHeaders" : ["Team Number", "Matches Observed", "Overall Shot Accuracy", 
+    "Auto Shooting Percentage", "Teleop Shooting Percetange", "Climb Level Average",  "Climb Frequency", 
+    "Average Defensive Rating", "Climb Speed"],
+
+      
+  "averagesIndexes": ["teamNumber", "matches_count", "avg_start_point",	"avg_cargo_high",
+                      "avg_cargo_low",	"least_cargo_cycles",
+                      "most_cargo_cycles", "avg_cargo_placed", "std_dev_cargo",
+                      "least_cycles", "most_cycles",
+                      "average_cycles", "std_dev_cycles", "best_climb",
+                      "percent_best_climb"]
+}

@@ -1,0 +1,233 @@
+@font-face {font-family: openserif; src: url("fonts/openserif.ttf")}
+@font-face {font-family: roboto-thin; src: url("fonts/roboto-thin.ttf")}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+form {
+    width: 420px;
+    margin: auto;
+    margin-bottom: 100px;
+    position: relative;
+}
+div {
+  margin-bottom: 20px;
+}
+label {
+  display: inline-block;
+  width: 240px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+button, input[type="text"], input[type="number"] {
+  float: right;
+}
+p {
+  display: inline-block;
+  font-size: 13px;
+  margin-right: 15px;
+  margin-top: 0px;
+}
+input[type="text"], input[type="number"] {
+    width: 150px;
+}
+.radioButtons {
+    line-height: 21px;
+    padding: 10px;
+    vertical-align: top;
+}
+.autocomplete-items {
+  background-color: #fff;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  transition-duration: .15s;
+  cursor: pointer;
+}
+.autocomplete-items:hover {
+  background-color: #b9b9b9;
+}
+
+#teamNumberInputautocomplete-list {
+  background-color: #b10003;
+  width: 158px;
+  text-align: center;
+  border-top: none;
+  position: absolute;
+  right: 0px;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding-top: 10px;
+}
+
+.scoringQuestions {
+  margin: auto;
+}
+
+.scoringQuestions label {
+  width: 50px;
+}
+.scoringQuestions input[type="number"] {
+  float: none;
+  width: 40px;
+}
+
+
+textarea {
+  width: 100%;
+  height: 85px;
+}
+
+.radioButtons p {
+	font-family: roboto-thin;
+}
+
+#radioBtnBlock {
+  display: block;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.autocompleteEmptyText {
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+form div br {
+	display: none;
+}
+
+.upButton, .downButton {
+    background: none;
+    border: none;
+    font-size: 36px;
+    color: #b10003;
+    padding: 0px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.scoringNumber {
+    font-size: 28px;
+    margin: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.scoringQuestions div {
+  width: 10%;
+  text-align: center;
+  display: inline-block;
+}
+
+.scoringQuestions div h4{
+  margin: 0px;
+}
+
+.scoringQuestions div + div {
+    margin-left: 30px;
+}
+
+.scoringQuestions div input[type="number"] {
+  font-family: openserif;
+  border: none;
+  -moz-appearance: textfield;
+  pointer-events: none;
+  text-align: center;
+  margin: 0;
+}
+
+button:disabled {
+    color: #ff9494;
+    cursor: default;
+}
+
+input:not([readonly="readonly"]) {
+  border: 0;
+  border-bottom: 2px solid #b10003;
+  padding: 4px;
+  font-family: openserif;
+}
+
+input:not([readonly="readonly"]):focus {
+    border-bottom-color: #6b0d0d;
+}
+
+@media only screen and (max-width: 1080px) {
+  #teamNumberInputautocomplete-list {
+    position: relative;
+    width: 80.8%;
+    margin: auto;
+    padding-bottom: 10px;
+  }
+  .autocompleteEmptyText {
+    font-size: 35px;
+  }
+  .autocomplete-items {
+    height: 60px;
+    vertical-align: middle;
+    font-size: 45px;
+  }
+	form div br {
+		display: inherit;
+	}
+	.radioButtons p {
+		font-size: 40px;
+	}
+	.scoringQuestions label {
+    width: 9%;
+	}
+	input[type="radio"] {
+		height: 50px;
+		width: 50px;
+	}
+	input[type="text"], input[type="number"] {
+    width: 80%;
+    font-size: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    height: 70px;
+	}
+  textarea {
+    width: 80%;
+    font-size: 35px;
+    height: 900px
+  }
+  button, input[type="text"], input[type="number"] {
+    float: none;
+  }
+	form {
+		width: 100%;
+	}
+	form h2 {
+		font-size: 60px;
+	}
+	form label {
+		font-size: 40px;
+		width: 100%;
+    text-align: center;
+	}
+	button {
+		width: 100%;
+		height: 70px;
+		background-color: #b10003;
+		color: white;
+		border-radius: 6px;
+		border: 0;
+		font-size: 40px;
+		padding: 6px;
+		font-family: openserif;
+	}
+  .upButton, .downButton {
+    font-size: 80px;
+  }
+  .scoringQuestions div + div {
+    margin-left: 10%;
+  }
+}

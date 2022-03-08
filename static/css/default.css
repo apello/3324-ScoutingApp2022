@@ -1,0 +1,84 @@
+@font-face {font-family: openserif; src: url("fonts/openserif1.ttf")}
+@font-face {font-family: roboto-thin; src: url("fonts/roboto-thin.ttf")}
+@font-face {font-family: materialicons; src: url("fonts/materialicons.ttf")}
+
+h2 {
+	width: 50%;
+	text-align: center;
+	margin: auto;
+}
+
+#topBar {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background: url('icon.png'), #b10003;
+	width: 100%;
+	color: white;
+	height: 50px;
+	padding-top: 20px;
+	background-size: 4%;
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+body {
+	text-align: center;
+	padding-top: 90px;
+	font-family: openserif;
+	overflow-x: hidden;
+}
+
+#backButton {
+	transition-duration: .15s;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	background-color: transparent;
+	text-decoration: none;
+	font-size: 15px;
+	color: white;
+	cursor: pointer;
+	height: 70px;
+	border: none;
+	width: 13%;
+	font-family: openserif;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+#backButton:hover {
+	background-color: #0003;
+}
+
+.icon {
+	font-family: materialicons;
+}
+
+@media only screen and (max-width: 1080px) {
+	body {
+		padding-top: 15%;
+	}
+	#backButton {
+		height: 100%;
+		width: 22%;
+		font-size: 25px;
+	}
+	#topBar {
+		height: initial;
+		background-size: 7%;
+	}
+	h2 {
+		padding-top: 0;
+		padding-bottom: 3%;
+		font-size: 40px;
+	}
+	a {
+		font-size: 40px;
+	}
+	h4 {
+		font-size: 50px;
+	}
+}
