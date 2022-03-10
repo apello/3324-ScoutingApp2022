@@ -1,128 +1,119 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<title>Electrical Scouting Form</title>
+      	<link rel="icon" href="{{ url_for('static',filename = 'favicon.png')}}">
+      	<link rel="stylesheet" href="{{ url_for('static',filename = 'css/default.css')}}">
+      <link rel="stylesheet" href="{{ url_for('static',filename = 'css/form.css')}}">
+      <script type="text/javascript" src="{{ url_for('static', filename = 'js/autofill.js') }}"></script>
+	</head>
+	<body>
+		<div id="topBar">
+			<a href="/"><button id="backButton">< Back to Home</button></a>
 
-<head>
-	<title>Electrical Scouting Form</title>
-	<link rel="icon" href="{{ url_for('static',filename = 'favicon.png')}}">
-	<link rel="stylesheet" href="{{ url_for('static',filename = 'css/default.css')}}">
-	<link rel="stylesheet" href="{{ url_for('static',filename = 'css/form.css')}}">
-	<!-- <script type="text/javascript" src="{{ url_for('static', filename = 'js/autofill.js') }}"></script> -->
-</head>
+      		<h2>Electrical Pit Scouting</h2>
+      	</div>
 
-<body>
-	<div id="topBar">
-		<a href="/">
-			<button id="backButton">
-				< Back to Home
-			</button>
-		</a>
+		<form method="POST" action="submit?form=electrical">
 
-		<h2>Electrical Pit Scouting</h2>
-	</div>
-
-	<form method="POST" action="submit?form=electrical">
-
-		<!-- ["team_number", "team_structure", "number_of_members", "mount_kill_switch", 
+			<!-- ["team_number", "team_structure", "number_of_members", "mount_kill_switch", 
 				"wire_layout", "type_of_wire", "have_pneumatics", "air_regulation", "belly_pan", "belly_pan_layout"
 				"anything_different", "anything_special", "brownout_prevention", "preseason_content", "helps_with_strategy",
 				"any_encoders", "encoders_use", "can_pwm", "other"] -->
 
-		<div>
-			<label>Team Number</label> <br>
-			<input type="number" name="team_number" placeholder="3324" id="teamNumberInput" required>
-		</div>
-		<div>
-			<label>What is your basic team structure and do you have an electrical subgroup?</label> <br>
-			<input type="text" name="team_structure">
-		</div>
-		<div>
-			<label>How many members of your team do electrical?</label> <br>
-			<input type="number" name="number_of_members" min="1" value="1">
-		</div>
+			<div>
+				<label>Team Number</label> <br>
+				<input type="number" name="team_number" placeholder="3324" id="teamNumberInput" required>
+			</div>
+			<div>
+				<label>What is your basic team structure and do you have an electrical subgroup?</label> <br>
+				<input type="text" name="team_structure">
+			</div>
+			<div>
+				<label>How many members of your team do electrical?</label> <br>
+				<input type="number" name="number_of_members" min="1" value="1">
+			</div>
 
-		<div>
-			<label>How did you mount the kill switch?</label>
-			<input type="text" name="mount_kill_switch">
-		</div>
+			<div>
+				<label>How did you mount the kill switch?</label>
+				<input type="text" name="mount_kill_switch">
+			</div>
 
-		<div>
-			<label>How did you plan/manage wire layout? (How neat is their board?)</label>
-			<input type="text" name="wire_layout">
-		</div>
+			<div>
+				<label>How did you plan/manage wire layout? (How neat is their board?)</label>
+				<input type="text" name="wire_layout">
+			</div>
 
-		<div>
-			<label>What kind of connectors did you use? (and do they look secure - Wire strength/visible wires?)</label>
-			<input type="text" name="type_of_wire">
-		</div>
+			<div>
+				<label>What kind of connectors did you use? (and do they look secure - Wire strength/visible wires?)</label>
+				<input type="text" name="type_of_wire">
+			</div>
 
-		<div>
-			<label>Do you have pneumatics? If so, what are you using it for? (Mechanisms, etc.)</label>
-			<input type="text" name="have_pneumatics">
-		</div>
+			<div>
+				<label>Do you have pneumatics? If so, what are you using it for? (Mechanisms, etc.)</label>
+				<input type="text" name="have_pneumatics">
+			</div>
 
-		<div>
-			<label>If using pneumatics, how are you regulating air pressure(keeping air from leaking)?</label>
-			<input type="text" name="air_regulation">
-		</div>
+			<div>
+				<label>If using pneumatics, how are you regulating air pressure(keeping air from leaking)?</label>
+				<input type="text" name="air_regulation">
+			</div>
 
-		<div>
-			<label>What materials did you mount your components on?</label>
-			<input type="text" name="belly_pan">
-		</div>
+			<div>
+				<label>What materials did you mount your components on?</label>
+				<input type="text" name="belly_pan">
+			</div>
 
-		<div>
-			<label>Where did you put your components?</label>
-			<input type="text" name="belly_pan_layout">
-		</div>
-
-		<div>
-			<label>Did you do anything different this year that you haven't done in the past? How did that work
-				out?</label> <br>
-			<input type="text" name="anything_different">
-		</div>
-		<div>
-			<label>Anything special about your board?</label> <br>
-			<input type="text" name="anything_special">
-		</div>
-		<div>
-			<label>How do you manage current to prevent brownouts?</label> <br>
-			<input type="text" name="brownout_prevention">
-		</div>
-		<div>
-			<label>What does your electrical group do during preseason?</label> <br>
-			<input type="text" name="preseason_content">
-		</div>
-		<div>
-			<label>Does the electrical group help with strategy and robot design decisions?</label> <br>
-			<span class="radioButtons">
-				<p>Yes <input type="radio" required name="helps_with_strategy" value="1"> </p>
-				<p>No <input type="radio" required name="helps_with_strategy" value="10"> </p>
-			</span>
-		</div>
-		<div>
-			<label>Do you have any encoders or sensors on your robot?</label> <br>
-			<span class="radioButtons">
+			<div>
+				<label>Where did you put your components?</label>
+				<input type="text" name="belly_pan_layout">
+			</div>
+ 
+			<div>
+				<label>Did you do anything different this year that you haven't done in the past? How did that work out?</label> <br>
+				<input type="text" name="anything_different">
+			</div>
+			<div>
+				<label>Anything special about your board?</label> <br>
+				<input type="text" name="anything_special">
+			</div>
+			<div>
+				<label>How do you manage current to prevent brownouts?</label> <br>
+				<input type="text" name="brownout_prevention">
+			</div>
+			<div>
+				<label>What does your electrical group do during preseason?</label> <br>
+				<input type="text" name="preseason_content">
+			</div>
+			<div>
+				<label>Does the electrical group help with strategy and robot design decisions?</label> <br>
+				<span class="radioButtons"> 
+					<p>Yes <input type="radio" required name="helps_with_strategy" value="1"> </p>
+					<p>No <input type="radio" required name="helps_with_strategy" value="10"> </p> 
+				</span>
+			</div>
+			<div>
+				<label>Do you have any encoders or sensors on your robot?</label> <br>
+				<span class="radioButtons">
 				<p>Yes <input type="radio" required name="any_encoders" value="1"> </p>
-				<p>No <input type="radio" required name="any_encoders" value="0"> </p>
-			</span>
-		</div>
-		<div>
-			<label>How did you use your encoders?</label> <br>
-			<input type="text" name="encoders_use">
-		</div>
-		<div>
-			<label>Do you daisychain or use CAN hubs?</label> <br>
-			<span class="radioButtons" id="radioBtnBlock">
-				<p>CAN <input type="radio" required name="can_pwm" value="CAN"> </p>
-				<p>PWM <input type="radio" required name="can_pwm" value="PWM"> </p>
-			</span>
-		</div>
-		<div>
-			<label>Notes</label> <br>
-			<input type="text" name="other">
-		</div>
-		<button>Submit</button>
-	</form>
-</body>
-
+				<p>No <input type="radio" required name="any_encoders" value="0"> </p> </span>
+			</div>
+			<div>
+				<label>How did you use your encoders?</label> <br>
+				<input type="text" name="encoders_use">
+			</div>
+			<div>
+				<label>Do you daisychain or use CAN hubs?</label> <br>
+				<span class="radioButtons" id="radioBtnBlock"> 
+					<p>CAN <input type="radio" required name="can_pwm" value="CAN"> </p>
+					<p>PWM <input type="radio" required name="can_pwm" value="PWM"> </p> 
+				</span>
+			</div>
+			<div>
+				<label>Notes</label> <br>
+				<input type="text" name="other">
+			</div>
+			<button>Submit</button>
+		</form>
+	</body>
 </html>
