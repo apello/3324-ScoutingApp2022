@@ -58,47 +58,47 @@ document.addEventListener("DOMContentLoaded", function (event) {
             case 1://GETTING MATCHES OBSERVED 0
               item.innerHTML = matches.length;
               break;
-            case 2://GETTING AVG START POINT
+            case 2://GETTING TAXI PERCENTAGE
+              item.innerHTML = ((arraySum(getColData(matches, [j+1])) / getColData(matches, [j+1]).length)*100) + "%";
+              break;
             case 3://GETTING AVG CARGO HIGH
             case 4://GETTING AVG CARGO LOW
-              item.innerHTML = arraySum(getColData(matches, [j])) / getColData(matches, [j]).length
+              item.innerHTML = arraySum(getColData(matches, [j+1])) / getColData(matches, [j+1]).length
               break;
             case 5: //GETTING LEAST CARGO CYCLES
-              item.innerHTML = Math.min(...getColData(matches, [3, 5]));
+              item.innerHTML = Math.min(...getColData(matches, [4, 6]));
               break;
             case 6://GETTING MOST CARGO CYCLES
-              item.innerHTML = Math.max(...getColData(matches, [3, 5]));
+              item.innerHTML = Math.max(...getColData(matches, [4, 6]));
               break;
             case 7://GETTING AVG CARGO PLACED
-              item.innerHTML = arraySum(getColData(matches, [3, 5])) / getColData(matches, [3, 5]).length
+              item.innerHTML = arraySum(getColData(matches, [4, 6])) / getColData(matches, [4, 6]).length
               break;
             case 8://GETTING STD DEV CARGO
-              item.innerHTML = stdDev(getColData(matches, [3, 5]))
+              item.innerHTML = stdDev(getColData(matches, [4, 6]))
               break;
             case 9://GETTING LEAST CYCLES
-              item.innerHTML = Math.min(...getColData(matches, [3, 8]));
+              item.innerHTML = Math.min(...getColData(matches, [4, 9]));
               break;
             case 10://GETTING MOST CYCLES
-              item.innerHTML = Math.max(...getColData(matches, [3, 8]));
+              item.innerHTML = Math.max(...getColData(matches, [4, 9]));
               break;
             case 11://GETTING AVERAGE CYCLES
-              item.innerHTML = arraySum(getColData(matches, [3, 8])) / getColData(matches, [3, 8]).length
+              item.innerHTML = arraySum(getColData(matches, [4, 9])) / getColData(matches, [4, 9]).length
               break;
             case 12://GETTING STD DEV CYCLES
-              item.innerHTML = stdDev(getColData(matches, [3, 8]))
+              item.innerHTML = stdDev(getColData(matches, [4, 9]))
               break;
             case 13://GETTING BEST CLIMB
-              item.innerHTML = Math.max(...getColData(matches, [11]));
+              item.innerHTML = Math.round(Math.max(...getColData(matches, [13])));
               break;
             case 14://GETTING % OF MATCHES BEST CLIMB ACHIEVED
-              item.innerHTML = String(getColData(matches, [11]).reduce(function (a, b) {
-                return a + (b === Math.max(...getColData(matches, [11])));
-              }, 0) / getColData(matches, [11]).length * 100) + "%";
-
+              item.innerHTML = String(getColData(matches, [13]).reduce(function (a, b) {
+                return a + (b === Math.max(...getColData(matches, [13])));
+              }, 0) / getColData(matches, [13]).length * 100) + "%";
               break;
             case 15: //GETTING AVERAGE DEFENSIVE RATING
-              defRatingLength = getColData(matches, [13]).length;
-              item.innerHTML = (parseInt(arraySum(getColData(matches, [13]))) / defRatingLength); // defensive / matches observed
+              item.innerHTML = parseInt(arraySum(getColData(matches, [14]))) / getColData(matches, [14]).length; // defensive / matches observed
               break;
             case 16: //TOTAL SCORE FOR ALLIANCE
               item.innerHTML = totalPoints(matches);
@@ -150,22 +150,27 @@ function totalPoints(matches) {
     - climb-4: 15
   */
 
+   /*  "match": ["team_number", "match_number", "scouter_name", "moved_initiation",
+              "auto_low_miss", "auto_low_hit", "auto_high_miss", "auto_high_hit",
+          "tele_low_miss", "tele_low_hit", "tele_high_miss", "tele_high_hit",
+              "attempted_climb", "ending_level", "defensive_score", "climb_information", "notes"], */
+
   totalScore = [];
-  totalScore.push(parseInt(arraySum(getColData(matches, [2]))) * 2); // move from intitation 
-  totalScore.push(parseInt(arraySum(getColData(matches, [4]))) * 2); // auto low points
-  totalScore.push(parseInt(arraySum(getColData(matches, [6]))) * 4); // auto high points
-  totalScore.push(parseInt(arraySum(getColData(matches, [8])))); // teleop low score
-  totalScore.push(parseInt(arraySum(getColData(matches, [10]))) * 2); // teleop high score
+  totalScore.push(parseInt(arraySum(getColData(matches, [3]))) * 2); // move from intitation 
+  totalScore.push(parseInt(arraySum(getColData(matches, [5]))) * 2); // auto low points
+  totalScore.push(parseInt(arraySum(getColData(matches, [7]))) * 4); // auto high points
+  totalScore.push(parseInt(arraySum(getColData(matches, [9])))); // teleop low score
+  totalScore.push(parseInt(arraySum(getColData(matches, [11]))) * 2); // teleop high score
 
   for (var index = 0; index < matches.length; index++) {
-    if (parseInt(matches[index][12]) > 0) {
-      if (parseInt(matches[index][12]) == 1) {
+    if (parseInt(matches[index][13]) > 0) {
+      if (parseInt(matches[index][13]) == 1) {
         totalScore.push(4); // climb 1
-      } else if (parseInt(matches[index][12]) == 2) {
+      } else if (parseInt(matches[index][13]) == 2) {
         totalScore.push(6); // climb 2
-      } else if (parseInt(matches[index][12]) == 3) {
+      } else if (parseInt(matches[index][13]) == 3) {
         totalScore.push(10); // climb 3
-      } else if (parseInt(matches[index][12]) == 4) {
+      } else if (parseInt(matches[index][13]) == 4) {
         totalScore.push(15); // climb 4
       }
     }

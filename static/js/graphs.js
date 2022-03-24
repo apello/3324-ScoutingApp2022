@@ -57,6 +57,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
         // grab team graph data
         for (var j = 0; j < constants.graphCalculationHeaders.length; j++) {
           switch (j) {
+
+            /* ["team_number", "match_number", "scouter_name", "moved_initiation",
+              "auto_low_miss", "auto_low_hit", "auto_high_miss", "auto_high_hit",
+          "tele_low_miss", "tele_low_hit", "tele_high_miss", "tele_high_hit",
+              "attempted_climb", "ending_level", "defensive_score", "climb_information", "notes"], */
             case 0:
               var teamNumber = teamList[teamIndexNum]; // FIXME: Not working for some reason, using teamNumberValue instead
               break;
@@ -64,28 +69,24 @@ document.addEventListener("DOMContentLoaded", function (event) {
               var matchesObserved = matches.length;
               break;
             case 3: //GETTING OVERALL SHOOTING PERCENTAGE
-              var shootingPct = shootingPercentage(matches, [3, 4, 5, 6, 7, 8, 9, 10]);
+              var shootingPct = shootingPercentage(matches, [4, 5, 6, 7, 8, 9, 10, 11]);
               break;
             case 4: //GETTING AUTO SHOOTING PERCENTAGE
-              var autoShootingPct = shootingPercentage(matches, [3, 4, 5, 6]);
+              var autoShootingPct = shootingPercentage(matches, [4, 5, 6, 7]);
               break;
 
             case 5: //GETTING TELEOP SHOOTING PERCENTAGE
-              var teleopShootingPct = shootingPercentage(matches, [7, 8, 9, 10]);
+              var teleopShootingPct = shootingPercentage(matches, [8, 9, 10, 11]);
               break;
 
             case 6: //GETTING AVERAGE CLIMB LEVEL
-              climbLevelArray = [];
-              for (var index = 0; index < matches.length; index++) { climbLevelArray.push(matches[index][12]); }
-              var climbLvlAvg = (arraySum(climbLevelArray) / climbLevelArray.length) * 25; // 0 : no climb, 25 : low, 50 : medium, 75 : high, 100 : transversal
+              var climbLvlAvg = (parseInt(arraySum(getColData(matches, [13]))) / getColData(matches, [13]).length) * 25; // 0 : no climb, 25 : low, 50 : medium, 75 : high, 100 : transversal
               break;
-
             case 7: //GETTING AVERAGE CLIMB FREQUENCY
-              climbFreqAvg = (parseInt(arraySum(getColData(matches, [11]))) / matchesObserved) * 100; // attemped climbs / matches observed
+              var climbFreqAvg = (parseInt(arraySum(getColData(matches, [12]))) / matchesObserved) * 100; // attemped climbs / matches observed
               break;
             case 8: //GETTING AVERAGE DEFENSIVE RATING
-              defRatingLength = getColData(matches, [13]).length;
-              defRatingAvg = (parseInt(arraySum(getColData(matches, [13]))) / defRatingLength) * 10; // defensive / matches observed
+              var defRatingAvg = (parseInt(arraySum(getColData(matches, [14]))) / getColData(matches, [14]).length) * 10; // defensive / matches observed
               break;
           }
         }
@@ -152,8 +153,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
             scale: {
 
               ticks: {
+                beginAtZero: true,
                 suggestedMin: 0,
-                suggestedMax: 100,
+                userCallback: function(label, index, labels) {
+                   // when the floored value is the same as the value we have a whole number
+                   if (Math.floor(label) === label) {
+                       return label;
+                   }
+                },
                 stepSize: 25, // 25 - 50 - 75 - 100 
                 maxTicksLimit: 11, // Or use maximum number of ticks and gridlines to show 
                 display: false, // remove label text only,
@@ -209,7 +216,7 @@ function shootingPercentage(matches, array) {
   var totalShots;
 
   for (var index = 0; index < array.length; index++) { // loop through array
-    if (array[index] === 4 || array[index] === 6 || array[index] === 8 || array[index] === 10) { // if number is "auto_low_hit", "auto_high_hit", "tele_high_hit", "tele_low_hit" index
+    if (array[index] === 5 || array[index] === 7 || array[index] === 9 || array[index] === 11) { // if number is "auto_low_hit", "auto_high_hit", "tele_high_hit", "tele_low_hit" index
       totalHitsArray.push(arraySum(getColData(matches, [array[index]]))); // add to hit array
       totalShotsArray.push(arraySum(getColData(matches, [array[index]]))); // add to total array
     } else { // else add to total array
